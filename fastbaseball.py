@@ -29,8 +29,8 @@ eighthTop = scores[14]
 eighthBottom = scores[15]
 ninthTop = scores[16]
 
-if not scores[17]:
-    print "Empty Element"
+#if not scores[17]:
+#   print "Empty Element"
 
 #print scores
 
