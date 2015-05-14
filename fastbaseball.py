@@ -4,10 +4,10 @@ from lxml import html
 import requests
 import random
 
+# scrape the website
+
 page = requests.get('http://www.cbssports.com/mlb/gametracker/playbyplay/MLB_20150513_NYM@CHC')
 tree = html.fromstring(page.text)
-
-#print page.text #prints the entire HTML
 
 scores = tree.xpath('//*[@id="inning"]/td/text()')
 skipHometeam = ""
