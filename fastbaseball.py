@@ -9,11 +9,11 @@ import time
 # print time.strftime("%Y%m%d")
 
 # get the date that the game was played, MMDD
-
+# no error checking setup, user can enter whatever they want
 datePlayed = raw_input("What date was this game played, for example 0513, MMDD? ")
 
 # get the game the user wants to view CHC@NYM, etc
-
+# no error checking setup, user can enter whatever they want
 teamsPlaying = raw_input("What game do you want to view, for example NYM@CHC, or CHC@NYM? ")
 
 # scrape website
