@@ -3,12 +3,8 @@
 from lxml import html
 import requests
 import random
-import time
 import re
 import sys
-
-# this is just a test
-# print time.strftime("%Y%m%d")
 
 # get the date that the game was played, MMDD
 # regex checking only allows chars 0-9, and len() check only allows 4 chars 
