@@ -132,7 +132,7 @@ userTeam = raw_input("what team do you want, Home or Visitor? ")
 
 if "Home" in userTeam:
 	print "You can skip the home team bottom inning numbers: %s" % skipNowhome
+elif "Visitor" in userTeam:
+	print "You can skip the vistor team top inning numbers: %s" % skipNowvisitor
 else:
-	if "Visitor" in userTeam:
-		print "You can skip the vistor team top inning numbers: %s" % skipNowvisitor
-
+	print "Unrecognized team, please enter either Home or Visitor"
