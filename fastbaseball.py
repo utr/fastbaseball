@@ -126,9 +126,13 @@ if len(scores) >= 18:
 skipNowhome = random.sample(skipHometeam, 3)
 skipNowvisitor = random.sample(skipVisteam, 3)
 
-# print skippable innings to user
+# ask user what team they want to know about Home or Visitor
 
-print "You can skip the home team bottom inning numbers: %s" % skipNowhome
-print "You can skip the visiting team top inning numbers: %s" % skipNowvisitor
+userTeam = raw_input("what team do you want, Home or Visitor? ")
 
+if "Home" in userTeam:
+	print "You can skip the home team bottom inning numbers: %s" % skipNowhome
+else:
+	if "Visitor" in userTeam:
+		print "You can skip the vistor team top inning numbers: %s" % skipNowvisitor
 
