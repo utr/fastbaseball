@@ -130,9 +130,11 @@ skipNowvisitor = random.sample(skipVisteam, 3)
 
 userTeam = raw_input("what team do you want, Home or Visitor? ")
 
-if "Home" in userTeam:
+# checks if user entered home or visitor, and uses the lower() function on the inputted user variable
+
+if "home" in userTeam.lower():
 	print "You can skip the home team bottom inning numbers: %s" % skipNowhome
-elif "Visitor" in userTeam:
+elif "visitor" in userTeam.lower():
 	print "You can skip the vistor team top inning numbers: %s" % skipNowvisitor
 else:
 	print "Unrecognized team, please enter either Home or Visitor"
