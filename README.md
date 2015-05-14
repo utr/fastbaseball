@@ -1,6 +1,6 @@
 ### fastbaseball
-*** Designed to show you innings in a baseball game that you can skip. 
-*** This is useful if you want to watch a game on TV in a timely manner. 
+
+Designed to show you innings in a baseball game that you might want to skip. This is useful if you want to watch a game on TV in a timely manner. 
 
 - Currently designed to import game day play by play data from cbssports.com
 
