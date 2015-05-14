@@ -3,13 +3,26 @@
 from lxml import html
 import requests
 import random
+import time
 
-# scrape the website
+# this is just a test
+# print time.strftime("%Y%m%d")
 
-page = requests.get('http://www.cbssports.com/mlb/gametracker/playbyplay/MLB_20150513_NYM@CHC')
+# get the date that the game was played, MMDD
+
+datePlayed = raw_input("What date was this game played, for example 0513, MMDD? ")
+
+# get the game the user wants to view CHC@NYM, etc
+
+teamsPlaying = raw_input("What game do you want to view, for example NYM@CHC, or CHC@NYM? ")
+
+# scrape website
+
+page = requests.get('http://www.cbssports.com/mlb/gametracker/playbyplay/MLB_2015' + datePlayed + "_" + teamsPlaying.upper())
 tree = html.fromstring(page.text)
 
 scores = tree.xpath('//*[@id="inning"]/td/text()')
+
 skipHometeam = ""
 skipVisteam = ""
 
@@ -128,7 +141,7 @@ skipNowvisitor = random.sample(skipVisteam, 3)
 
 # ask user what team they want to know about Home or Visitor
 
-userTeam = raw_input("what team do you want, Home or Visitor? ")
+userTeam = raw_input("What team do you want, Home or Visitor? ")
 
 # checks if user entered home or visitor, and uses the lower() function on the inputted user variable
 
