@@ -20,128 +20,117 @@ elif len(datePlayed) > 4:
 # no error checking setup, user can enter whatever they want
 teamsPlaying = raw_input("What game do you want to view, for example NYM@CHC, or CHC@NYM? ")
 
-# scrape website
+# scrape website using xpath
 
 page = requests.get('http://www.cbssports.com/mlb/gametracker/playbyplay/MLB_2015' + datePlayed + "_" + teamsPlaying.upper())
 tree = html.fromstring(page.text)
 
 scores = tree.xpath('//*[@id="inning"]/td/text()')
 
-skipHometeam = ""
-skipVisteam = ""
+runsHometeam = ""
+runsVisteam = ""
+
+hitsHometeam = ""
+hitsVisteam = ""
 
 # 1st inning
 
 if len(scores) >= 1:
-	firstTop = scores[0]
-	if "0 Runs" in firstTop:
-		skipVisteam = [1]
+	if "0 Runs" in scores[0]:
+		runsVisteam = [1]
 
 if len(scores) >= 2:
-	firstBottom = scores[1]
-	if "0 Runs" in firstBottom:
-		skipHometeam = [1]
+	if "0 Runs" in scores[1]:
+		runsHometeam = [1]
 
 # 2nd innning
 
 if len(scores) >= 3:
-	secondTop = scores[2]
-	if "0 Runs" in secondTop:
-		skipVisteam.append(2)
+	if "0 Runs" in scores[2]:
+		runsVisteam.append(2)
+
 
 if len(scores) >= 4:
-	secondBottom = scores[3]
-	if "0 Runs" in secondBottom:
-		skipHometeam.append(2)
+	if "0 Runs" in scores[3]:
+		runsHometeam.append(2)
 
 # 3rd inning
 
 if len(scores) >= 5:
-	thirdTop = scores[4]
-	if "0 Runs" in thirdTop:
-		skipVisteam.append(3)
+	if "0 Runs" in scores[4]:
+		runsVisteam.append(3)
 
 if len(scores) >= 6:
-	thirdBottom = scores[5]
-	if "0 Runs" in thirdBottom:
-		skipHometeam.append(3)
+	if "0 Runs" in scores[5]:
+		runsHometeam.append(3)
 
 # 4th inning
 
 if len(scores) >= 7:
-	fourthTop = scores[6]
-	if "0 Runs" in fourthTop:
-		skipVisteam.append(4)
+	if "0 Runs" in scores[6]:
+		runsVisteam.append(4)
 
 if len(scores) >= 8:
-	fourthBottom = scores[7]
-	if "0 Runs" in fourthBottom:
-		skipHometeam.append(4)
+	if "0 Runs" in scores[7]:
+		runsHometeam.append(4)
 
 # 5th inning
 
 if len(scores) >= 9:
-	fifthTop = scores[8]
-	if "0 Runs" in fifthTop:
-		skipVisteam.append(5)
+	if "0 Runs" in scores[8]:
+		runsVisteam.append(5)
 
 if len(scores) >= 10:
-	fifthBottom = scores[9]
-	if "0 Runs" in fifthBottom:
-		skipHometeam.append(5)
+	if "0 Runs" in scores[9]:
+		runsHometeam.append(5)
 
 #6th inning
 
 if len(scores) >= 11:
-	sixthTop = scores[10]
-	if "0 Runs" in sixthTop:
-		skipVisteam.append(6)
+	if "0 Runs" in scores[10]:
+		runsVisteam.append(6)
 
 if len(scores) >= 12:
-	sixthBottom = scores[11]
-	if "0 Runs" in sixthBottom:
-		skipHometeam.append(6)
+	if "0 Runs" in scores[11]:
+		runsHometeam.append(6)
 
 # 7th inning
 
 if len(scores) >= 13:
-	seventhTop = scores[12]
-	if "0 Runs" in seventhTop:
-		skipVisteam.append(7)
+	if "0 Runs" in scores[12]:
+		runsVisteam.append(7)
 
 if len(scores) >= 14:
-	seventhBottom = scores[13]
-	if "0 Runs" in seventhBottom:
-		skipHometeam.append(7)
+	if "0 Runs" in scores[13]:
+		runsHometeam.append(7)
 
 # 8th inning
 
 if len(scores) >= 15:
-	eighthTop = scores[14]
-	if "0 Runs" in eighthTop:
-		skipVisteam.append(8)
+	if "0 Runs" in scores[14]:
+		runsVisteam.append(8)
 
 if len(scores) >= 16:
-	eighthBottom = scores[15]
-	if "0 Runs" in eighthBottom:
-		skipHometeam.append(8)
+	if "0 Runs" in scores[15]:
+		runsHometeam.append(8)
 
 # 9th inning
 
 if len(scores) >= 17:
-	ninthTop = scores[16]
-	if "0 Runs" in ninthTop:
-		skipVisteam.append(9)
+	if "0 Runs" in scores[16]:
+		runsVisteam.append(9)
 
 if len(scores) >= 18:
-	ninthBottom = scores[17]
-	if "0 Runs" in ninthBottom:
-		skipHometeam.append(9)
+	if "0 Runs" in scores[17]:
+		runsHometeam.append(9)
 
 # pull 3 random innings
 
-skipNowhome = random.sample(skipHometeam, 3)
-skipNowvisitor = random.sample(skipVisteam, 3)
+skipNowhome = random.sample(runsHometeam, 3)
+skipNowvisitor = random.sample(runsVisteam, 3)
+
+#print "Innings where the visiting team didn't get any hits: %s" % hitsVisteam
+#print "Innings where the home team didn't get any hits: %s" % hitsHometeam
 
 # ask user what team they want to know about Home or Visitor
 
